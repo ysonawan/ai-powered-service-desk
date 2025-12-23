@@ -1,0 +1,79 @@
+server:
+  port: 8086
+
+spring:
+  application:
+    name: help.desk
+
+  # Database configuration
+  datasource:
+    url: jdbc:postgresql://localhost:5432/helpdesk_rag
+    username: helpdesk_user
+    password: helpdesk_password
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          batch_size: 20
+        order_inserts: true
+        order_updates: true
+    show-sql: false
+    open-in-view: false
+
+  ai:
+    mcp:
+      server:
+        enabled: true
+        stdio: false
+        name: help-desk-mcp-server
+        version: 1.0.0
+        resource-change-notification: true
+        prompt-change-notification: true
+        tool-change-notification: true
+        sse-endpoint: /api/v1/sse
+        sse-message-endpoint: /api/v1/mcp
+        type: sync
+        capabilities:
+          completion: true
+          prompt: true
+          resource: true
+          tool: true
+
+# Embedding API configuration
+embedding:
+  api:
+    url: http://localhost:8001/embed  # Update with your embedding API endpoint
+    model: e5-base                             # Model name for the API
+
+logging:
+  file:
+    name: ./logs/help-desk-mcp-server.log
+  level:
+    io.modelcontextprotocol: TRACE
+    org.springframework.ai.mcp: TRACE
+    io.modelcontextprotocol.spec: DEBUG
+    i.m.spec: DEBUG
+    i.m.server: DEBUG
+    i.m.s.t: DEBUG
+    com.company.ai.help.desk.config: DEBUG
+    com.company.ai.help.desk.service: DEBUG
+    com.company.ai.help.desk.integrations: DEBUG
+
+jira:
+  url: https://help-desk-mcp-demo.atlassian.net
+  basic-token: YXJqdW5zb25hd2FuZUB6b2hvbWFpbC5pbjpBVEFUVDN4RmZHRjBoeG1sdlVmcWxLS0ZVamhXYnA0aDMzNGpfd3luQkNKeGFJSzBzR2Vjdy1lRU5VOXhNTFV0aXNWcmEtMkFtMmcyQmoyRDZxakpDcGM3SUdEeS0yMjA2Q3JnWFhiaVdnYWNXUWFLNTFteGk4N0k0OERwcW5uT053VmctYWdmVjJnZXB0WGVZTFVBdzJIcks3dkNtN1MxNU9BSzVCeFJCTVVJUlFRYXVwNXlLUk09RjdBMUVDMDA=
+
+confluence:
+  url: https://help-desk-mcp-demo.atlassian.net/wiki
+  bearer-token: YXJqdW5zb25hd2FuZUB6b2hvbWFpbC5pbjpBVEFUVDN4RmZHRjBoeG1sdlVmcWxLS0ZVamhXYnA0aDMzNGpfd3luQkNKeGFJSzBzR2Vjdy1lRU5VOXhNTFV0aXNWcmEtMkFtMmcyQmoyRDZxakpDcGM3SUdEeS0yMjA2Q3JnWFhiaVdnYWNXUWFLNTFteGk4N0k0OERwcW5uT053VmctYWdmVjJnZXB0WGVZTFVBdzJIcks3dkNtN1MxNU9BSzVCeFJCTVVJUlFRYXVwNXlLUk09RjdBMUVDMDA=
+  documents:
+    - page-id: "1015813"
+      tenant-id: "bitsup"
+    - page-id: "1277953"
+      tenant-id: "sonarsup"
+

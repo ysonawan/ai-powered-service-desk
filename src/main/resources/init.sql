@@ -5,7 +5,8 @@ CREATE DATABASE helpdesk_rag;
 -- Connect to the new database
 \c helpdesk_rag
 
-CREATE USER helpdesk_user WITH PASSWORD 'helpdesk_password'
+--https://vault.zoho.in#/unlock/extension?routeName=%23%2Fpasscard%2F63500000000006020
+CREATE USER helpdesk_user WITH PASSWORD '<Replace with password from zoho vault>';
 
 -- Install pgvector extension
 CREATE EXTENSION IF NOT EXISTS vector;

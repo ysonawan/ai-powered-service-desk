@@ -9,7 +9,8 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/helpdesk_rag
     username: helpdesk_user
-    password: helpdesk_password
+    #--https://vault.zoho.in#/unlock/extension?routeName=%23%2Fpasscard%2F63500000000006020
+    password: <Replace with password from zoho vault>
     driver-class-name: org.postgresql.Driver
 
   jpa:
@@ -64,13 +65,16 @@ logging:
     com.company.ai.help.desk.service: DEBUG
     com.company.ai.help.desk.integrations: DEBUG
 
+
 jira:
   url: https://help-desk-mcp-demo.atlassian.net
-  basic-token: YXJqdW5zb25hd2FuZUB6b2hvbWFpbC5pbjpBVEFUVDN4RmZHRjBoeG1sdlVmcWxLS0ZVamhXYnA0aDMzNGpfd3luQkNKeGFJSzBzR2Vjdy1lRU5VOXhNTFV0aXNWcmEtMkFtMmcyQmoyRDZxakpDcGM3SUdEeS0yMjA2Q3JnWFhiaVdnYWNXUWFLNTFteGk4N0k0OERwcW5uT053VmctYWdmVjJnZXB0WGVZTFVBdzJIcks3dkNtN1MxNU9BSzVCeFJCTVVJUlFRYXVwNXlLUk09RjdBMUVDMDA=
+  #https://vault.zoho.in#/unlock/extension?routeName=%23%2Fpasscard%2F63500000000007021
+  basic-token: <Replace with password from zoho vault>
 
 confluence:
   url: https://help-desk-mcp-demo.atlassian.net/wiki
-  bearer-token: YXJqdW5zb25hd2FuZUB6b2hvbWFpbC5pbjpBVEFUVDN4RmZHRjBoeG1sdlVmcWxLS0ZVamhXYnA0aDMzNGpfd3luQkNKeGFJSzBzR2Vjdy1lRU5VOXhNTFV0aXNWcmEtMkFtMmcyQmoyRDZxakpDcGM3SUdEeS0yMjA2Q3JnWFhiaVdnYWNXUWFLNTFteGk4N0k0OERwcW5uT053VmctYWdmVjJnZXB0WGVZTFVBdzJIcks3dkNtN1MxNU9BSzVCeFJCTVVJUlFRYXVwNXlLUk09RjdBMUVDMDA=
+  #https://vault.zoho.in#/unlock/extension?routeName=%23%2Fpasscard%2F63500000000007021
+  bearer-token: <Replace with password from zoho vault>
   documents:
     - page-id: "1015813"
       tenant-id: "bitsup"
